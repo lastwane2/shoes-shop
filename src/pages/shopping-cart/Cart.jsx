@@ -4,6 +4,7 @@ export function Cart () {
     const cartData = useStore((state) => state.cart)
     const increaseProductQuantity = useStore((state) => state.increaseQuantity)
     const decreaseProductQuantity = useStore((state) => state.decreaseQuantity)
+    const deleteProduct = useStore((state) => state.deleteProduct)
     const totalPrice = useStore((state) => state.totalPrice);
 
     return (
@@ -46,6 +47,9 @@ export function Cart () {
                                                         className="border rounded-md py-2 px-4 ml-2"
                                                         onClick={() => increaseProductQuantity(cartItem.productId)}
                                                     >+</button>
+                                                    <button onClick={() => deleteProduct(cartItem.productId)}>
+                                                        Удалить
+                                                    </button>
                                                 </div>
                                             </td>
                                             <td className="py-4">${(cartItem.productPrice * cartItem.quantity).toFixed(2)}</td>

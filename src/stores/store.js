@@ -29,5 +29,12 @@ export const useStore = create((set) => ({
             totalPrice: updatedCart.reduce((sum, p) => sum + p.productPrice * p.quantity, 0),
         };
     }),
+    deleteProduct: (productKey) => set((state) => {
+        const updatedCart = state.cart.filter((element) => element.productId !== productKey);
+        return {
+            cart: updatedCart,
+            totalPrice: updatedCart.reduce((sum, p) => sum + p.productPrice * p.quantity, 0),
+        }
+    }),
     totalPrice: 0
 }));
